@@ -2,12 +2,12 @@ import time
 from multiprocessing import cpu_count, Pool
 
 
-def factorize(*args):
+def factorize(*number):
     res = []
-    for number in args:
+    for num in number:
         lst = []
-        for n in range(1, number + 1):
-            if number % n == 0:
+        for n in range(1, num + 1):
+            if num % n == 0:
                 lst.append(n)
         res.append(lst)
     return res
