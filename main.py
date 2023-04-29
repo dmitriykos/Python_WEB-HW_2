@@ -4,6 +4,11 @@ import shutil
 import os
 from pathlib import Path
 from normalize import normalize
+from threading import Thread, Event
+from time import sleep
+import logging
+from multiprocessing import Pool, current_process, cpu_count
+
 
 # створення цільових тек
 
