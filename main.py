@@ -4,10 +4,10 @@ import shutil
 import os
 from pathlib import Path
 from normalize import normalize
-from threading import Thread, Event
-from time import sleep
-import logging
-from multiprocessing import Pool, current_process, cpu_count
+from threading import Thread
+
+
+
 
 
 # створення цільових тек
@@ -96,7 +96,9 @@ def sort_files(path_folder: Path) -> str:  # отримаємо список ц�
 def main() -> str:
     try:
         folder = sys.argv[1]
-        sort_files(folder)
+        sort_threads = Thread(target=sort_files, args=(folder, ))
+        sort_threads.start()
+        sort_threads.join()
         delete_folders(folder)
         print(f"File in {folder} were sorted successfully!")
         print(f"All files: {count}")
